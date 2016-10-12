@@ -19,34 +19,18 @@ public class movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //if (change == 1)
-        //{
-        //    this.transform.position *= Time.time;
-        //    change = 2;
-        //}
-        //if (change == 2)
-        //{
-        //    this.transform.position = new Vector3(transform.position.x + Time.time,
-        //        transform.position.y + Time.time, transform.position.z + Time.time);
-        //    change = 3;
-        //}
-        //if (change == 3)
-        //{
-        //    this.transform.position /= Time.time;
-        //    change = 1;
-        //}
         currentTime = Time.time;
         deltaTime = currentTime - previousTime;
         if (up)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + speed * deltaTime, transform.position.z);
-            if (transform.position.y >= 10)
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + speed * deltaTime);
+            if (transform.position.z >= 10)
                 up = false;
         }
         else if (!up)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y - speed * deltaTime, transform.position.z);
-            if (transform.position.y <= -10)
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - speed * deltaTime);
+            if (transform.position.z <= -10)
                 up = true;
         }
         previousTime = currentTime;
